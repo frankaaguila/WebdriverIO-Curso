@@ -23,7 +23,7 @@ export const config = {
     specs: [
         // ToDo: define location for spec files here
         //'test/specs/**/**.js' //All
-        'test/specs/**/contact.js'
+        'test/specs/**/upload.js'
     ],
     // Patterns to exclude.
     exclude: [
