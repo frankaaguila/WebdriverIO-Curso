@@ -1,25 +1,42 @@
 // Practice E-Commerce Site – SDET Unicorns
 // https://practice.sdetunicorns.com/
 
-
+import HomePage from '../pages/home-page';
 
 describe('Home', () => {
-    // Pass Test
-    /*
-    it('Open URL & assert Title',() => {
+    //Before Hook
+    before(async() => {
+       //await HomePage.open(); //get URL from class
+       console.log('THIS COULD BE USED FOR TEST SETUP')
+    })
+    //Before Each Hook
+    beforeEach(async() => {
+        //await HomePage.open(); //get URL from class
+        console.log('THIS RUNS BEFORE EACH TEST')
+    })
+    //After Hook
+    after(async() => {
+        
+        console.log('THIS COULD BE USED FOR TEST CLEAN UP')
+    })
+    //After Each Hook
+    afterEach(async() => {
+        
+        console.log('THIS RUNS AFTER EACH TEST')
+    })
+    // Pass Test 
+    it('Open URL & assert Title',async () => {
         //Open URL
-        browser.url('https://practice.sdetunicorns.com/');
-
+        await browser.url('https://practice.sdetunicorns.com/');
+        
         //Assert Title
-        expect(browser).toHaveTitle('Practice E-Commerce Site – SDET Unicorns');
-
+        await expect(browser).toHaveTitle('Practice E-Commerce Site – SDET Unicorns');
     });
 
 //Fail Test
     it('Open URL & assert Title',async () => {
         //Open URL
         await browser.url('https://open.spotify.com/');
-
         //Assert Title
         await expect(browser).toHaveTitle('Spotify - Web Player: Music for everyone');
         //Failed Sentence
@@ -29,8 +46,6 @@ describe('Home', () => {
 
 
 //Find URL https://www.mercadolibre.com.mx/
-
-
     it('Open Search & assert URL',async () => {
         //Open Search Page
         await browser.url('https://open.spotify.com/search');
@@ -71,18 +86,17 @@ describe('Home', () => {
 
     });
 
-*/
 //Find Header Element and Assert Text
 
     it('Find Header Element & Assert Text',async () => {
         //Open Home Page
-        await browser.url('https://www.mercadolibre.com.mx/');
-
+        //await browser.url('https://www.mercadolibre.com.mx/');
+        await HomePage.open(); //get URL from class
         //Find Heading element
         const headingElement = await $('.ui-recommendations-title h2');
 
         //Get Text
-        const headingText = await headingElement.getText(); //For text manipulation
+        //const headingText = await headingElement.getText(); //For text manipulation
 
         //Assert text
         //await expect(headingText).toEqual('Oferta del día')

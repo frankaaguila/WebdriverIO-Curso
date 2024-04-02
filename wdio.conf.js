@@ -23,12 +23,23 @@ export const config = {
     specs: [
         // ToDo: define location for spec files here
         //'test/specs/**/**.js' //All
-        'test/specs/**/upload.js'
+        'test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
+    //Define Suites
+    suites: {
+        smoke: [
+            'test/specs/**/home.js',
+            'test/specs/**/contact.js'
+        ],
+        component:[
+            'test/specs/**/nav.js',
+        ]
+    },
+
     //
     // ============
     // Capabilities
@@ -52,6 +63,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
+        maxInstances: 5,
         browserName: 'chrome'
     }],
 
@@ -62,7 +74,7 @@ export const config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
