@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#nav-cart.nav-a.nav-a-2.nav-progressive-attribute"
+}

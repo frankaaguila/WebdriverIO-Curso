@@ -1,7 +1,8 @@
 // Practice E-Commerce Site – SDET Unicorns
 // https://practice.sdetunicorns.com/
 
-import HomePage from '../pages/home-page';
+//import HomePage from '../pages/home-page';
+import allureReporter from '@wdio/allure-reporter';
 
 describe('Home', () => {
     //Before Hook
@@ -26,6 +27,8 @@ describe('Home', () => {
     })
     // Pass Test 
     it('Open URL & assert Title',async () => {
+        //Allure add severity
+        allureReporter.addSeverity('minor')
         //Open URL
         await browser.url('https://practice.sdetunicorns.com/');
         
@@ -35,18 +38,22 @@ describe('Home', () => {
 
 //Fail Test
     it('Open URL & assert Title',async () => {
+        //Allure add severity
+        allureReporter.addSeverity('minor')
         //Open URL
         await browser.url('https://open.spotify.com/');
         //Assert Title
-        await expect(browser).toHaveTitle('Spotify - Web Player: Music for everyone');
+        //await expect(browser).toHaveTitle('Spotify - Web Player: Music for everyone');
         //Failed Sentence
-        //await expect(browser).toHaveTitle('Spotify - Web Player: Music for No one');
+        await expect(browser).toHaveTitle('Spotify - Web Player: Music for No one');
 
     });
 
 
 //Find URL https://www.mercadolibre.com.mx/
     it('Open Search & assert URL',async () => {
+        //Allure add severity
+        allureReporter.addSeverity('mayor')
         //Open Search Page
         await browser.url('https://open.spotify.com/search');
 
@@ -59,6 +66,8 @@ describe('Home', () => {
 //Find Element
 
     it('Click Cart Button & assert URL',async () => {
+        //Allure add severity
+        allureReporter.addSeverity('critical')
         //Open Home Page
         await browser.url('https://www.amazon.com.mx');
 
@@ -90,8 +99,8 @@ describe('Home', () => {
 
     it('Find Header Element & Assert Text',async () => {
         //Open Home Page
-        //await browser.url('https://www.mercadolibre.com.mx/');
-        await HomePage.open(); //get URL from class
+        await browser.url('https://www.mercadolibre.com.mx/');
+        //await HomePage.open(); //get URL from class
         //Find Heading element
         const headingElement = await $('.ui-recommendations-title h2');
 
